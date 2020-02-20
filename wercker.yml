@@ -45,6 +45,7 @@ deploy-to-kubernetes:
         name: deploy to kubernetes
         server: $OKE_MASTER
         token: $OKE_TOKEN
+        secret: $OKE_IMAGESECRET
         insecure-skip-tls-verify: true
         command: apply -f $WERCKER_OUTPUT_DIR/kubernetes/
 
@@ -53,6 +54,7 @@ deploy-to-kubernetes:
         name: set deployment timeout
         server: $OKE_MASTER
         token: $OKE_TOKEN
+        secret: $OKE_IMAGESECRET
         insecure-skip-tls-verify: true
         command: patch deployment/get-ip -p '{"spec":{"progressDeadlineSeconds":60}}'
 
@@ -62,5 +64,6 @@ deploy-to-kubernetes:
         name: check deployment status
         server: $OKE_MASTER
         token: $OKE_TOKEN
+        secret: $OKE_IMAGESECRET
         insecure-skip-tls-verify: true
         command: rollout status deployment/get-ip
