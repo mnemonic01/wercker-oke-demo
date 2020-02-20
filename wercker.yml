@@ -17,7 +17,7 @@ build:
             working-dir: $WERCKER_ROOT
             tag: $WERCKER_GIT_COMMIT
             ports: "8080"
-            username: $DOCKER_USERNAME
+            username: $OCI_REGISTRY_USERNAME
             password: $OCI_AUTH_TOKEN
             repository: $DOCKER_REPO
             registry: https://fra.ocir.io/v2
